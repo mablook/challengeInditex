@@ -4,8 +4,8 @@ declare module 'uiTypes' {
 
 
 export type PodcastContextType = {
-  todos?: RootFeed;
-  getTodo?: any
+  podcasts?: RootFeed;
+  getPodcasts?: any
 };
 
 export interface Name {
