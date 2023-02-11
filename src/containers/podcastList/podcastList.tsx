@@ -20,7 +20,6 @@ const PodcastList:FC = () => {
 
     return(
     <div>
-        <div>Podcaster</div>
         <ul className={styles.container}>
         <Search />
         {
