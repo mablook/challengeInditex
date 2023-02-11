@@ -1,4 +1,4 @@
-import { FC, useContext, useState } from "react"
+import { FC, useContext, useEffect, useState } from "react"
 import { Entry, PodcastContextType } from "uiTypes";
 import PodcastItem from "../components/podcastItem"
 import Search from "../components/search"
@@ -7,6 +7,14 @@ import { PodcastContext } from "../context/podcastContext";
 const PodcastList:FC = () => {
     const { podcasts, getPodcasts } = useContext(PodcastContext) as PodcastContextType;
     const [list,setList] = useState<Entry[]>()
+
+    useEffect(() => {
+        if(!podcasts){
+          getPodcasts();
+        }else if(podcasts){
+          setList(podcasts?.feed.entry)
+        }
+      },[getPodcasts, podcasts])
 
     return(
     <div>

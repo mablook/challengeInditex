@@ -1,21 +1,24 @@
 import * as React from 'react';
+import { PodcastContextType, RootFeed } from 'uiTypes';
+import { getData } from '../api/fetchApi';
 
 
-export const PodcastContext = React.createContext<any | null>(null);
+export const PodcastContext = React.createContext<PodcastContextType | null>(null);
 
 interface Props {
     children: React.ReactNode;
   }
 
 const PodcastProvider: React.FC<Props> = ({ children }) => {
-  const [podcasts, setPodcasts] = React.useState<any>();
+  const [podcasts, setPodcasts] = React.useState<RootFeed>();
 
-  const getPodcasts = async (todo:any) => {
-    const local = localStorage.getItem("name-test")
-    if(!local && !todo){
-      const data = await fetch('https://itunes.apple.com/us/rss/toppodcasts/limit=20/genre=1310/json')
-      setPodcasts(data as any)
-    }else if(!todo && local){
+  const getPodcasts = async () => {
+    const local = localStorage.getItem("save-list")
+    if(!local && !podcasts){
+      const data:any = await getData('https://itunes.apple.com/us/rss/toppodcasts/limit=20/genre=1310/json')
+      localStorage.setItem("save-list", JSON.stringify(data));
+      setPodcasts(data as RootFeed)
+    }else if(!podcasts && local){
         setPodcasts(JSON.parse(local))
     }
   }
