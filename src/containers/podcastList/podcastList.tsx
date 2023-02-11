@@ -19,6 +19,16 @@ const PodcastList:FC = () => {
         }
       },[getPodcasts, podcasts])
 
+      useEffect(() => {
+        if(podcasts && search){
+         const _result =  podcasts.feed.entry.filter(obj => obj['im:artist'].label.toLocaleLowerCase().includes(search.toLocaleLowerCase()) || obj['im:name'].label.toLocaleLowerCase().includes(search.toLocaleLowerCase()))
+         setList(_result)
+        }else{
+          setList(podcasts?.feed.entry)
+        }
+
+      },[search,podcasts])
+
       const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSearch(e.target.value)
       }
