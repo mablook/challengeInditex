@@ -1,0 +1,31 @@
+.container {
+  display: inline-table;
+  width: 250px;
+  max-width: 250px;
+  margin: 20px;
+  height: 110px;
+  cursor: pointer;
+}
+
+.container:hover {
+    .cardBodyContainer {
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+      }
+}
+
+.cardBodyContainer {
+  margin-top: -45px;
+  padding: 45px 10px 10px 10px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+}
+
+.img {
+  border-radius: 50%;
+  width: 70px;
+}
+
+.title {
+  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: 600;
+}

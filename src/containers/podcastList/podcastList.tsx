@@ -1,8 +1,10 @@
 import { FC, useContext, useEffect, useState } from "react"
 import { Entry, PodcastContextType } from "uiTypes";
-import PodcastItem from "../components/podcastItem"
-import Search from "../components/search"
-import { PodcastContext } from "../context/podcastContext";
+import PodcastItem from "../../components/podcastItem/podcastItem";
+
+import Search from "../../components/search"
+import { PodcastContext } from "../../context/podcastContext";
+import styles from './PodcastList.module.scss'
 
 const PodcastList:FC = () => {
     const { podcasts, getPodcasts } = useContext(PodcastContext) as PodcastContextType;
@@ -19,16 +21,13 @@ const PodcastList:FC = () => {
     return(
     <div>
         <div>Podcaster</div>
+        <ul className={styles.container}>
         <Search />
         {
-            list && list.map((r) => (
-                <img
-                  alt='pic'
-                  key={r.id.attributes['im:id']}
-                  src={r['im:image'][0].label}
-              />
+            list && list.map((entry) => (
+                <PodcastItem key={entry.id.label} entry={entry} />
         ))}
-        <PodcastItem />
+        </ul>
     </div>
     )
 }
