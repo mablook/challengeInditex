@@ -15,7 +15,7 @@ const PodcastProvider: React.FC<Props> = ({ children }) => {
   const getPodcasts = async () => {
     const local = localStorage.getItem("save-list")
     if(!local && !podcasts){
-      const data:any = await getData('https://itunes.apple.com/us/rss/toppodcasts/limit=20/genre=1310/json')
+      const data = await getData(process.env.REACT_APP_API_BASE_URL || '')
       localStorage.setItem("save-list", JSON.stringify(data));
       setPodcasts(data as RootFeed)
     }else if(!podcasts && local){

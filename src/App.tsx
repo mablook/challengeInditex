@@ -4,7 +4,7 @@ import './App.css';
 import PodcastItem from './components/podcastItem';
 import NotFound from './containers/notFound';
 import PodcastList from './containers/podcastList';
-import PodcastProvider, { PodcastContext } from './context/podcastContext';
+import PodcastProvider from './context/podcastContext';
 
 function App() {
   return (
