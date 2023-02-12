@@ -5,7 +5,7 @@ declare module 'uiTypes' {
 
 export type PodcastContextType = {
   podcasts?: RootFeed;
-  podcastDetail?: PodcastDetails[];
+  podcastDetail?: PodcastDetailsResponse;
   getPodcasts: () => Promise<void>;
   getPodcastDetail: (id: string) => Promise<void>;
 };
@@ -176,6 +176,10 @@ export interface RootFeed {
 }
 
 
+export interface PodcastDetailsResponse {
+  resultCount: number,
+  results: PodcastDetails[]
+}
 
 
 export interface PodcastDetails {

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { PodcastContextType, PodcastDetails, RootFeed } from 'uiTypes';
+import { PodcastContextType, PodcastDetails, PodcastDetailsResponse, RootFeed } from 'uiTypes';
 import { getData } from '../api/fetchApi';
 
 
@@ -11,7 +11,7 @@ interface Props {
 
 const PodcastProvider: React.FC<Props> = ({ children }) => {
   const [podcasts, setPodcasts] = React.useState<RootFeed>();
-  const [podcastDetail, setPodcastDetail] = React.useState<PodcastDetails[]>();
+  const [podcastDetail, setPodcastDetail] = React.useState<PodcastDetailsResponse>();
 
   const getPodcasts = async () => {
     const local = localStorage.getItem("save-list")
@@ -24,9 +24,9 @@ const PodcastProvider: React.FC<Props> = ({ children }) => {
     }
   }
   const getPodcastDetail = async (id:string) => {
-      const data = await getData(`${process.env.REACT_APP_API_PRODUCT_DETAIL}?id=${id}&media=podcast&entity=podcastEpisode&limit=100`)
+      const data = await getData(`${process.env.REACT_APP_API_PRODUCT_DETAIL}?id=${id}&media=podcast&entity=podcastEpisode&limit=15`)
       if(data){
-        setPodcastDetail(data as PodcastDetails[])
+        setPodcastDetail(data as PodcastDetailsResponse)
      }
   }
 
