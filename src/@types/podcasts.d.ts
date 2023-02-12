@@ -5,7 +5,7 @@ declare module 'uiTypes' {
 
 export type PodcastContextType = {
   podcasts?: RootFeed;
-  podcastDetail?: Entry;
+  podcastDetail?: PodcastDetails[];
   getPodcasts: () => Promise<void>;
   getPodcastDetail: (id: string) => Promise<void>;
 };
@@ -173,6 +173,52 @@ export interface Feed {
 
 export interface RootFeed {
   feed: Feed;
+}
+
+
+
+
+export interface PodcastDetails {
+  wrapperType: string;
+  kind: string;
+  collectionId: number;
+  trackId: any;
+  artistName: string;
+  collectionName: string;
+  trackName: string;
+  collectionCensoredName: string;
+  trackCensoredName: string;
+  collectionViewUrl: string;
+  feedUrl: string;
+  trackViewUrl: string;
+  artworkUrl30: string;
+  artworkUrl60: string;
+  artworkUrl100: string;
+  collectionPrice: number;
+  trackPrice: number;
+  collectionHdPrice: number;
+  releaseDate: Date;
+  collectionExplicitness: string;
+  trackExplicitness: string;
+  trackCount: number;
+  trackTimeMillis: number;
+  country: string;
+  currency: string;
+  primaryGenreName: string;
+  contentAdvisoryRating: string;
+  artworkUrl600: string;
+  genreIds: string[];
+  genres: any[];
+  episodeUrl: string;
+  closedCaptioning: string;
+  artistIds: any[];
+  artworkUrl160: string;
+  episodeFileExtension: string;
+  episodeContentType: string;
+  episodeGuid: string;
+  description: string;
+  shortDescription: string;
+  previewUrl: string;
 }
 
 
