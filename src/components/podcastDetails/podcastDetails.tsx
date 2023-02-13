@@ -1,34 +1,41 @@
-import { FC, useContext, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { FC, useContext, useEffect, useCallback } from "react";
+import { Link, useParams } from "react-router-dom";
 import { Entry, PodcastContextType } from "uiTypes";
 import { PodcastContext } from "../../context/podcastContext";
 import { convertDate, convertTime } from "../../utils/date";
+import { cropText } from "../../utils/text";
 import styles from "./PodcastDetails.module.scss";
 
 const PodcastDetails: FC = () => {
   const { podcastId } = useParams();
   const { podcastDetail, getPodcastDetail } = useContext(PodcastContext) as PodcastContextType;
 
+  const getDetailsInfo = useCallback(async () => {
+    podcastId && await getPodcastDetail(podcastId);
+  },[getPodcastDetail, podcastId])
+
   useEffect(() => {
-    if (podcastId) {
-      getPodcastDetail(podcastId);
+    if (podcastId && podcastId !== podcastDetail?.podcastInfo.id.attributes["im:id"]) {
+      getDetailsInfo()
     }
-  }, [podcastId]);
+  }, [getDetailsInfo, podcastDetail?.podcastInfo.id.attributes, podcastId]);
 
   return (
     <div className={styles.container}>
       <div className={[styles.card, styles.details].join(" ")}>
         <div>
-          <img alt={podcastDetail?.results[0].artistName} src={podcastDetail?.results[0].artworkUrl100} className={styles.img} />
+          <img alt={podcastDetail?.podcastInfo["im:name"].label} src={podcastDetail?.podcastInfo["im:image"][2].label} className={styles.img} />
         </div>
         <hr className={styles.solid} />
         <div className={styles.title}>
-          {podcastDetail?.results[0].collectionName}
-          <div>by {podcastDetail?.results[0].artistName}</div>
+          {podcastDetail?.podcastInfo["im:name"].label}
+          <div>by {podcastDetail?.podcastInfo["im:artist"].label}</div>
         </div>
         <hr className={styles.solid} />
-        <div>{podcastDetail?.results[0].shortDescription}
-        description description description rtyryrty rt rty rt</div>
+        <div className={styles.description}>
+          Description:
+          <div>{ cropText({ text : podcastDetail?.podcastInfo.summary.label, size: 100 })}</div>
+          </div>
       </div>
       <div>
         <div className={[styles.card, styles.episodes].join(" ")}>Episodes: {podcastDetail?.resultCount}</div>
@@ -42,7 +49,7 @@ const PodcastDetails: FC = () => {
             podcastDetail.results.map((results) => {
               return (
                 <li key={results.trackId} className={styles.tr}>
-                  <div className={styles.tabletitle}><a href="#">{results.trackName}</a></div>
+                  <div className={styles.tabletitle}><Link to={`/podcast/${podcastDetail?.podcastInfo.id.attributes["im:id"]}/episode/${results.trackId}`} title={results.trackName}>{cropText({text:results.trackName, size:50})}</Link></div>
                   <div className={styles.tabledate}>{convertDate({ date: results.releaseDate })}</div>
                   <div className={styles.tableduration}>{convertTime({ time: results.trackTimeMillis })}</div>
                 </li>

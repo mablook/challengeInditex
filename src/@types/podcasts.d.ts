@@ -8,6 +8,7 @@ export type PodcastContextType = {
   podcastDetail?: PodcastDetailsResponse;
   getPodcasts: () => Promise<void>;
   getPodcastDetail: (id: string) => Promise<void>;
+  setPodcastDetail: Dispatch<SetStateAction<PodcastDetailsResponse | undefined>>
 };
 
 export interface Name {
@@ -177,10 +178,17 @@ export interface RootFeed {
 
 
 export interface PodcastDetailsResponse {
+  podcastInfo: Entry,
   resultCount: number,
   results: PodcastDetails[]
 }
 
+export interface PodcastInfo{
+  title: string,
+  id?: string,
+  description: string,
+  img: string
+}
 
 export interface PodcastDetails {
   wrapperType: string;
