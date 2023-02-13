@@ -37,7 +37,7 @@ export const useApiGet = (url: string): TApiResponse => {
 };
 
 
-export const getData = async (endpoint: string) => {
+export const getData = async (endpoint:string) => {
   const response = await fetch(endpoint)
   const data: any = await response.json()
   return data

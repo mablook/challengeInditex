@@ -1,4 +1,5 @@
 import { FC } from "react";
+import { useNavigate } from "react-router-dom";
 import { Entry } from "uiTypes";
 import styles from './PodcastItem.module.scss'
 
@@ -7,8 +8,16 @@ interface PodcastItemProps {
 }
 
 const PodcastItem:FC<PodcastItemProps> = ({entry}) => {
+    let navigate = useNavigate();
+
+    const handleItemClick = ({link}:{link:string}) => {
+        navigate(`/podcast/${link}`)
+    }
+
     return(
-    <li className={styles.container}>
+    <li className={styles.container} onClick={() => {
+        handleItemClick({ link: entry.id.attributes["im:id"] })
+    }}>
         <div className={styles.imageContainer}>
         <img
         alt='pic'
