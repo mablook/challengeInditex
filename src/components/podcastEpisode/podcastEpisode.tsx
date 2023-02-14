@@ -31,7 +31,7 @@ const PodcastEpisode: FC = () => {
     }
   }, [episodeId, podcastDetail]);
 
-  console.log('--- the episode details ---', episode?.episodeUrl)
+  console.log('--- the episode details ---', episode?.description)
 
   return (
     <div className={styles.container}>

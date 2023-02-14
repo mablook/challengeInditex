@@ -11,6 +11,8 @@ const PodcastDetails: FC = () => {
   const { podcastId } = useParams();
   const { podcastDetail, getPodcastDetail } = useContext(PodcastContext) as PodcastContextType;
 
+  console.log('--- podcast details --', podcastDetail)
+
   const getDetailsInfo = useCallback(async () => {
     podcastId && (await getPodcastDetail(podcastId));
   }, [getPodcastDetail, podcastId]);
