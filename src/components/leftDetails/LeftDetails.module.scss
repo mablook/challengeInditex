@@ -1,0 +1,54 @@
+.container {
+  display: flex;
+  margin: 30px;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.card {
+  padding: 10px;
+  margin: 20px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  display: flex;
+}
+
+.img {
+  width: 156px;
+  margin-top: 15px;
+}
+
+.details {
+  flex-direction: column;
+  max-width: 200px;
+  height: 420px;
+}
+
+.title {
+  padding: 5px;
+  text-align: left;
+  font-weight: 500;
+  & div {
+    font-weight: normal;
+    font-style: italic;
+  }
+}
+
+.description {
+  padding: 5px;
+  text-align: left;
+  font-weight: 500;
+  & div {
+    font-weight: normal;
+    font-style: italic;
+  }
+}
+
+.solid {
+  width: 100%;
+  border-top: 1px solid #f7f7f7;
+}
+
+.episodes {
+  font-weight: 500;
+  font-size: 20px;
+}
