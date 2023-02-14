@@ -12,6 +12,14 @@
   display: flex;
 }
 
+.details{
+  max-width: 607px;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  padding: 20px;
+}
+
 .episodes {
   font-weight: 500;
   font-size: 20px;
@@ -60,4 +68,26 @@
   display: table-cell;
   width: 100px;
   text-align: center;
+}
+
+.episodeTitle{
+  font-weight: 700;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+
+.episodeDescription{
+  font-style: italic;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.episodeAudio{
+  width: 100%;
+  & audio{
+    width: 100%;
+    filter: sepia(20%) saturate(70%) grayscale(1) contrast(99%) invert(12%);
+  }
+
 }

@@ -29,18 +29,20 @@ const PodcastEpisode: FC = () => {
       const episode = podcastDetail.results.filter((e) => e.trackId === Number(episodeId));
       setEpisode(episode[0]);
     }
-  }, [episodeId]);
+  }, [episodeId, podcastDetail]);
+
+  console.log('--- the episode details ---', episode?.episodeUrl)
 
   return (
     <div className={styles.container}>
       <LeftDetails podcastImage={podcastDetail?.podcastInfo["im:image"][2].label} podcastName={podcastDetail?.podcastInfo["im:name"].label} podcastSummary={podcastDetail?.podcastInfo.summary.label} poscastArtist={podcastDetail?.podcastInfo["im:artist"].label} />
 
       <div className={[styles.card, styles.details].join(" ")}>
-        <div>{episode?.trackName}</div>
-        <div>{episode?.description}</div>
-        <div>
+        <div className={styles.episodeTitle}>{episode?.trackName}</div>
+        <div className={styles.episodeDescription}>{episode?.description}</div>
+        <div className={styles.episodeAudio}>
           <audio controlsList="nodownload" controls>
-            <source src={episode?.episodeUrl} type="audio/mpeg" />
+          { episode?.episodeUrl && <source src={episode?.episodeUrl} type="audio/mp3" /> }
           </audio>
         </div>
       </div>
