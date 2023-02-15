@@ -1,3 +1,10 @@
+# What is the purpose of this project?
+
+The test and its project specifications are in the document, doubts about the related functionalities can be found attached
+[Challenge Inditex (1).pdf](https://github.com/mablook/challengeInditex/files/10743267/Challenge.Inditex.1.pdf)
+
+https://user-images.githubusercontent.com/1661231/219041069-9b806b44-eb0d-47e7-afdb-12f075f47c0a.mp4
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -32,10 +39,8 @@ If you aren’t satisfied with the build tool and configuration choices, you can
 
 Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
 ## PersistentData <==> App Global State
 
-The data is persistent in the browser, as required by the application. Taking into account the use of REACT the best practice is to `access the state` directly and not the client's browser. Therefore, the data is saved in the local storage but loaded in the state of the application, `CONTEXT` global state
+Data is persistent in the browser as required by the application. Taking into account the use of SPA with REACT, the best practice is to access the state directly and not the client's browser. So data is saved in local storage but loaded in application global`CONTEXT`
 
 See the section about [Managing State](https://beta.reactjs.org/learn/managing-state) for more information.
