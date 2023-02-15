@@ -6,9 +6,11 @@ declare module 'uiTypes' {
 export type PodcastContextType = {
   podcasts?: RootFeed;
   podcastDetail?: PodcastDetailsResponse;
+  loading: boolean;
   getPodcasts: () => Promise<void>;
   getPodcastDetail: (id: string) => Promise<void>;
   setPodcastDetail: Dispatch<SetStateAction<PodcastDetailsResponse | undefined>>
+  setLoading: Dispatch<SetStateAction<boolean>>
 };
 
 export interface Name {

@@ -1,5 +1,5 @@
 import { FC, useContext, useEffect, useCallback } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { PodcastContextType } from "uiTypes";
 import { PodcastContext } from "../../context/podcastContext";
 import { convertDate, convertTime } from "../../utils/date";
@@ -8,10 +8,9 @@ import LeftDetails from "../leftDetails/leftDetails";
 import styles from "./PodcastDetails.module.scss";
 
 const PodcastDetails: FC = () => {
+  let navigate = useNavigate();
   const { podcastId } = useParams();
-  const { podcastDetail, getPodcastDetail } = useContext(PodcastContext) as PodcastContextType;
-
-  console.log('--- podcast details --', podcastDetail)
+  const { podcastDetail, getPodcastDetail, setLoading } = useContext(PodcastContext) as PodcastContextType;
 
   const getDetailsInfo = useCallback(async () => {
     podcastId && (await getPodcastDetail(podcastId));
@@ -22,6 +21,15 @@ const PodcastDetails: FC = () => {
       getDetailsInfo();
     }
   }, [getDetailsInfo, podcastDetail?.podcastInfo.id.attributes, podcastId]);
+
+  const handleClick = ({link}:{link:string}) => {
+    setLoading(true)
+    navigate(link)
+  }
+
+  useEffect(() => {
+    podcastDetail && setLoading(false)
+  },[podcastDetail, setLoading])
 
   return (
     <div className={styles.container}>
@@ -40,9 +48,9 @@ const PodcastDetails: FC = () => {
               return (
                 <li key={results.trackId} className={styles.tr}>
                   <div className={styles.tabletitle}>
-                    <Link to={`/podcast/${podcastDetail?.podcastInfo.id.attributes["im:id"]}/episode/${results.trackId}`} title={results.trackName}>
+                    <a href="#" onClick={() => handleClick({link: `/podcast/${podcastDetail?.podcastInfo.id.attributes["im:id"]}/episode/${results.trackId}`}) } title={results.trackName}>
                       {cropText({ text: results.trackName, size: 50 })}
-                    </Link>
+                    </a>
                   </div>
                   <div className={styles.tabledate}>{convertDate({ date: results.releaseDate })}</div>
                   <div className={styles.tableduration}>{convertTime({ time: results.trackTimeMillis })}</div>

@@ -36,6 +36,6 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 ## PersistentData <==> App Global State
 
-The data is persistent in the browser, as required by the application. Taking into account the use of REACT the best practice is to access THE STATUS directly and not the client's BROWSER. Therefore, the data is saved in the local storage but loaded in the state of the application, CONTEXT global state
+The data is persistent in the browser, as required by the application. Taking into account the use of REACT the best practice is to `access the state` directly and not the client's browser. Therefore, the data is saved in the local storage but loaded in the state of the application, `CONTEXT` global state
 
 See the section about [Managing State](https://beta.reactjs.org/learn/managing-state) for more information.

@@ -9,10 +9,8 @@ import styles from "./PodcastEpisode.module.scss";
 
 const PodcastEpisode: FC = () => {
   const { podcastId, episodeId } = useParams();
-  const { podcastDetail, getPodcastDetail } = useContext(PodcastContext) as PodcastContextType;
+  const { podcastDetail, getPodcastDetail, setLoading } = useContext(PodcastContext) as PodcastContextType;
   const [episode, setEpisode] = useState<PodcastDetails>();
-
-  console.log("--- the episode", episode);
 
   const getDetailsInfo = useCallback(async () => {
     podcastId && (await getPodcastDetail(podcastId));
@@ -28,10 +26,9 @@ const PodcastEpisode: FC = () => {
     if (podcastDetail && episodeId) {
       const episode = podcastDetail.results.filter((e) => e.trackId === Number(episodeId));
       setEpisode(episode[0]);
+      setLoading(false)
     }
-  }, [episodeId, podcastDetail]);
-
-  console.log('--- the episode details ---', episode?.description)
+  }, [episodeId, podcastDetail, setEpisode, setLoading]);
 
   return (
     <div className={styles.container}>
