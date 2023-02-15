@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Entry, PodcastContextType, PodcastDetails, PodcastDetailsResponse, RootFeed } from 'uiTypes';
-import { getData } from '../api/fetchApi';
+import { useState } from 'react';
+import { Entry, PodcastContextType, PodcastDetailsResponse, RootFeed } from 'uiTypes';
 import { getLocalStorage } from '../api/persistData';
 
 
@@ -11,8 +11,9 @@ interface Props {
   }
 
 const PodcastProvider: React.FC<Props> = ({ children }) => {
-  const [podcasts, setPodcasts] = React.useState<RootFeed>();
-  const [podcastDetail, setPodcastDetail] = React.useState<PodcastDetailsResponse>();
+  const [podcasts, setPodcasts] = useState<RootFeed>();
+  const [podcastDetail, setPodcastDetail] = useState<PodcastDetailsResponse>();
+  const [loading, setLoading] = useState<boolean>(false)
 
   const getPodcasts = async () => {
     if(!podcasts){
@@ -31,7 +32,7 @@ const PodcastProvider: React.FC<Props> = ({ children }) => {
         await setPodcastDetail(data as PodcastDetailsResponse)
   }
 
-  return <PodcastContext.Provider value={{ podcasts, podcastDetail, getPodcasts, getPodcastDetail, setPodcastDetail }}>{children}</PodcastContext.Provider>;
+  return <PodcastContext.Provider value={{ podcasts, podcastDetail, getPodcasts, getPodcastDetail, setPodcastDetail, loading, setLoading }}>{children}</PodcastContext.Provider>;
 };
 
 export default PodcastProvider;

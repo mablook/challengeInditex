@@ -1,6 +1,7 @@
-import { FC } from "react";
+import { FC, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { Entry } from "uiTypes";
+import { Entry, PodcastContextType } from "uiTypes";
+import { PodcastContext } from "../../context/podcastContext";
 import styles from './PodcastItem.module.scss'
 
 interface PodcastItemProps {
@@ -9,8 +10,10 @@ interface PodcastItemProps {
 
 const PodcastItem:FC<PodcastItemProps> = ({entry}) => {
     let navigate = useNavigate();
+    const { setLoading } = useContext(PodcastContext) as PodcastContextType;
 
     const handleItemClick = ({link}:{link:string}) => {
+        setLoading(true)
         navigate(`/podcast/${link}`)
     }
 
