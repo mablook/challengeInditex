@@ -5,7 +5,7 @@ The test and its project specifications are in the document, doubts about the re
 
 https://user-images.githubusercontent.com/1661231/219041069-9b806b44-eb0d-47e7-afdb-12f075f47c0a.mp4
 
-# Getting Started with Create React App
+# Getting Started with Create React App using Typescript
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -41,6 +41,4 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 ## PersistentData <==> App Global State
 
-Data is persistent in the browser as required by the application. Taking into account the use of SPA with REACT, the best practice is to access the state directly and not the client's browser. So data is saved in local storage but loaded in application global`CONTEXT`
-
-See the section about [Managing State](https://beta.reactjs.org/learn/managing-state) for more information.
+Data is persistent in the browser as required by the application. Taking into account the use of SPA with REACT, the best practice is to access the state directly and not the client's browser. Data is saved in local storage but loaded in application global`CONTEXT`
