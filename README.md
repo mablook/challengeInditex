@@ -7,6 +7,9 @@ https://user-images.githubusercontent.com/1661231/219041069-9b806b44-eb0d-47e7-a
 
 # Getting Started with Create React App using Typescript
 
+# The complete map of related types can be found at:
+![image](https://user-images.githubusercontent.com/1661231/219627314-e8e4eca7-0033-421a-855d-2925fb5de032.png)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
@@ -42,3 +45,12 @@ Instead, it will copy all the configuration files and the transitive dependencie
 ## PersistentData <==> App Global State
 
 Data is persistent in the browser as required by the application. Taking into account the use of SPA with REACT, the best practice is to access the state directly and not the client's browser. Data is saved in local storage but loaded in application global`CONTEXT`
+
+## Environment Variables 
+
+Some environment variables can be set in the .env document like:  
+REACT_APP_BASE_URL=http://localhost  
+REACT_APP_API_BASE_URL=https://itunes.apple.com/us/rss/toppodcasts/limit=100/genre=1310/json  
+REACT_APP_API_PRODUCT_DETAIL=https://itunes.apple.com/lookup  
+REACT_APP_API_INVALIDATE=3600000  
+
