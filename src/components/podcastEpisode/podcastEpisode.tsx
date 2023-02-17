@@ -7,17 +7,12 @@ import styles from "./PodcastEpisode.module.scss";
 
 const PodcastEpisode: FC = () => {
   const { podcastId, episodeId } = useParams();
-  const [searchParams, setSearchParams] = useSearchParams();
   const { podcastDetail, getPodcastDetail, setLoading } = useContext(PodcastContext) as PodcastContextType;
   const [episode, setEpisode] = useState<PodcastDetails>();
 
   const getDetailsInfo = useCallback(async () => {
     if(podcastId){
-      console.log('--- search params ---', searchParams.get('podcastId'))
-      searchParams.delete('error');
-      setSearchParams(searchParams);
-      const _podcastId = podcastId.replace(/\D/g,'');
-      await getPodcastDetail(_podcastId)
+      await getPodcastDetail(podcastId)
     }
   }, [getPodcastDetail, podcastId]);
 
