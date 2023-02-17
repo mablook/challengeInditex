@@ -4,15 +4,17 @@ import './App.css';
 import PodcastDetails from './components/podcastDetails/podcastDetails';
 import PodcastEpisode from './components/podcastEpisode/podcastEpisode';
 import DefaultPageContainer from './containers/defaultPageContainer/defaultPageContainer';
-import NotFound from './containers/notFound';
+import NotFound from './containers/notFound/notFound';
 import PodcastList from './containers/podcastList/podcastList';
 import PodcastProvider from './context/podcastContext';
 
 function App() {
+  if(window.location.hash) {
+    window.history.replaceState("", document.title, window.location.pathname);
+}
   return (
     <div className="App">
       <PodcastProvider>
-
         <BrowserRouter>
           <Routes>
           <Route path="/" element={<DefaultPageContainer />} >

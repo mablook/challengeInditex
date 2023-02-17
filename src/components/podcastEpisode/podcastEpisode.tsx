@@ -1,19 +1,24 @@
 import { FC, useContext, useEffect, useCallback, useState } from "react";
-import { useParams } from "react-router-dom";
-import { Entry, PodcastContextType, PodcastDetails } from "uiTypes";
+import { useParams, useSearchParams } from "react-router-dom";
+import { PodcastContextType, PodcastDetails } from "uiTypes";
 import { PodcastContext } from "../../context/podcastContext";
-import { convertDate, convertTime } from "../../utils/date";
-import { cropText } from "../../utils/text";
 import LeftDetails from "../leftDetails/leftDetails";
 import styles from "./PodcastEpisode.module.scss";
 
 const PodcastEpisode: FC = () => {
   const { podcastId, episodeId } = useParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const { podcastDetail, getPodcastDetail, setLoading } = useContext(PodcastContext) as PodcastContextType;
   const [episode, setEpisode] = useState<PodcastDetails>();
 
   const getDetailsInfo = useCallback(async () => {
-    podcastId && (await getPodcastDetail(podcastId));
+    if(podcastId){
+      console.log('--- search params ---', searchParams.get('podcastId'))
+      searchParams.delete('error');
+      setSearchParams(searchParams);
+      const _podcastId = podcastId.replace(/\D/g,'');
+      await getPodcastDetail(_podcastId)
+    }
   }, [getPodcastDetail, podcastId]);
 
   useEffect(() => {
@@ -26,9 +31,12 @@ const PodcastEpisode: FC = () => {
     if (podcastDetail && episodeId) {
       const episode = podcastDetail.results.filter((e) => e.trackId === Number(episodeId));
       setEpisode(episode[0]);
-      setLoading(false)
     }
   }, [episodeId, podcastDetail, setEpisode, setLoading]);
+
+  const hendleAudioLoaded = () => {
+    setLoading(false)
+  }
 
   return (
     <div className={styles.container}>
@@ -38,7 +46,7 @@ const PodcastEpisode: FC = () => {
         <div className={styles.episodeTitle}>{episode?.trackName}</div>
         <div className={styles.episodeDescription}>{episode?.description}</div>
         <div className={styles.episodeAudio}>
-          <audio controlsList="nodownload" controls>
+          <audio controlsList="nodownload" controls onCanPlay={hendleAudioLoaded}>
           { episode?.episodeUrl && <source src={episode?.episodeUrl} type="audio/mp3" /> }
           </audio>
         </div>

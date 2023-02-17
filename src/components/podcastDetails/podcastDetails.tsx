@@ -31,6 +31,8 @@ const PodcastDetails: FC = () => {
     podcastDetail && setLoading(false)
   },[podcastDetail, setLoading])
 
+
+
   return (
     <div className={styles.container}>
       <LeftDetails podcastImage={podcastDetail?.podcastInfo["im:image"][2].label} podcastName={podcastDetail?.podcastInfo["im:name"].label} podcastSummary={podcastDetail?.podcastInfo.summary.label} poscastArtist={podcastDetail?.podcastInfo["im:artist"].label} />
@@ -48,9 +50,9 @@ const PodcastDetails: FC = () => {
               return (
                 <li key={results.trackId} className={styles.tr}>
                   <div className={styles.tabletitle}>
-                    <a href="#" onClick={() => handleClick({link: `/podcast/${podcastDetail?.podcastInfo.id.attributes["im:id"]}/episode/${results.trackId}`}) } title={results.trackName}>
-                      {cropText({ text: results.trackName, size: 50 })}
-                    </a>
+                    <button className={styles.viewDetails} onClick={() => handleClick({link: `/podcast/${podcastDetail?.podcastInfo.id.attributes["im:id"]}/episode/${results.trackId}`}) } title={results.trackName}>
+                      {cropText({ text: results.trackName, size: 40 })}
+                    </button>
                   </div>
                   <div className={styles.tabledate}>{convertDate({ date: results.releaseDate })}</div>
                   <div className={styles.tableduration}>{convertTime({ time: results.trackTimeMillis })}</div>
