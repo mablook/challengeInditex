@@ -46,6 +46,9 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 Data is persistent in the browser as required by the application. Taking into account the use of SPA with REACT, the best practice is to access the state directly and not the client's browser. Data is saved in local storage but loaded in application global`CONTEXT`
 
+![image](https://user-images.githubusercontent.com/1661231/219865051-c92adb9e-eb42-4918-a8f0-87ced18bf8c8.png)
+
+
 ## Environment Variables 
 
 Some environment variables can be set in the .env document like:  
@@ -54,3 +57,4 @@ REACT_APP_API_BASE_URL=https://itunes.apple.com/us/rss/toppodcasts/limit=100/gen
 REACT_APP_API_PRODUCT_DETAIL=https://itunes.apple.com/lookup  
 REACT_APP_API_INVALIDATE=3600000  
 
+## No testing is required in the document
