@@ -5,10 +5,11 @@ const invalidateTime = process.env.REACT_APP_API_INVALIDATE || '3600000'
 export const getLocalStorage:({url}:{url?:string}) => any = async ({url}) => {
   if (!url) return
     try {
-      const item:any = window.localStorage.getItem(url);
+      const _item:any = window.localStorage.getItem(url);
+      const item = await JSON.parse(_item)
       const expiration = Date.now() - Number(invalidateTime);
-      if(item && item.validate < expiration ){
-        return JSON.parse(item)
+      if(item && item.validate > expiration ){
+        return item
       }else{
         const data = await getData(url)
         data.validate = Date.now();

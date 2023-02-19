@@ -31,12 +31,9 @@ const PodcastDetails: FC = () => {
     podcastDetail && setLoading(false)
   },[podcastDetail, setLoading])
 
-
-
   return (
     <div className={styles.container}>
       <LeftDetails podcastImage={podcastDetail?.podcastInfo["im:image"][2].label} podcastName={podcastDetail?.podcastInfo["im:name"].label} podcastSummary={podcastDetail?.podcastInfo.summary.label} poscastArtist={podcastDetail?.podcastInfo["im:artist"].label} />
-
       <div>
         <div className={[styles.card, styles.episodes].join(" ")}>Episodes: {podcastDetail?.resultCount}</div>
         <ul className={[styles.card, styles.ul].join(" ")}>
@@ -46,7 +43,8 @@ const PodcastDetails: FC = () => {
             <div className={styles.tableduration}>Duration</div>
           </li>
           {podcastDetail &&
-            podcastDetail.results.map((results) => {
+            podcastDetail.results.map((results, index) => {
+              if(index === 0) return
               return (
                 <li key={results.trackId} className={styles.tr}>
                   <div className={styles.tabletitle}>
