@@ -29,11 +29,12 @@ const PodcastProvider: React.FC<Props> = ({ children }) => {
         }
         let data:PodcastDetailsResponse = await getLocalStorage({ url :`${process.env.REACT_APP_API_PRODUCT_DETAIL}?id=${id}&media=podcast&entity=podcastEpisode&limit=15` })
         const info:Entry[] = podcasts?.feed.entry.filter(obj => obj.id.attributes["im:id"] === id)!
+        if(info === undefined) return
         data.podcastInfo = info[0]
         await setPodcastDetail(data as PodcastDetailsResponse)
     }catch(e){
       console.error(e)
-      window.location.href = 'http://localhost:3000/notfound';
+      // window.location.href = 'http://localhost:3000/notfound';
       return undefined
     }
 
