@@ -1,5 +1,5 @@
 import { FC, useContext, useEffect, useCallback, useState } from "react";
-import { useParams, useSearchParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { PodcastContextType, PodcastDetails } from "uiTypes";
 import { PodcastContext } from "../../context/podcastContext";
 import LeftDetails from "../leftDetails/leftDetails";
@@ -41,7 +41,7 @@ const PodcastEpisode: FC = () => {
         <div className={styles.episodeTitle}>{episode?.trackName}</div>
         <div className={styles.episodeDescription}>{episode?.description}</div>
         <div className={styles.episodeAudio}>
-          <audio controlsList="nodownload" controls onCanPlay={hendleAudioLoaded}>
+          <audio controlsList="nodownload" data-testid="audio-player" controls onCanPlay={hendleAudioLoaded}>
           { episode?.episodeUrl && <source src={episode?.episodeUrl} type="audio/mp3" /> }
           </audio>
         </div>

@@ -8,7 +8,7 @@ const ContentLoading:FC = () => {
 
     const _loading = [styles.loading, loading ? styles.startLoading : '']
 
-    return(<div className={_loading.join(" ")}><div></div><div></div><div></div></div>)
+    return(<div className={_loading.join(" ")} data-testid="loading-data"><div></div><div></div><div></div></div>)
 }
 
 export default ContentLoading;

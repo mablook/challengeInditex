@@ -1,5 +1,5 @@
 import { FC, useContext, useEffect, useCallback } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { PodcastContextType } from "uiTypes";
 import { PodcastContext } from "../../context/podcastContext";
 import { convertDate, convertTime } from "../../utils/date";
@@ -48,7 +48,7 @@ const PodcastDetails: FC = () => {
               return (
                 <li key={results.trackId} className={styles.tr}>
                   <div className={styles.tabletitle}>
-                    <button className={styles.viewDetails} onClick={() => handleClick({link: `/podcast/${podcastDetail?.podcastInfo.id.attributes["im:id"]}/episode/${results.trackId}`}) } title={results.trackName}>
+                    <button className={styles.viewDetails} data-testid="buttom-episode" onClick={() => handleClick({link: `/podcast/${podcastDetail?.podcastInfo.id.attributes["im:id"]}/episode/${results.trackId}`}) } title={results.trackName}>
                       {cropText({ text: results.trackName, size: 40 })}
                     </button>
                   </div>
