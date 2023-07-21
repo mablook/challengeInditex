@@ -5,9 +5,9 @@ The test and its project specifications are in the document, doubts about the re
 
 https://user-images.githubusercontent.com/1661231/219041069-9b806b44-eb0d-47e7-afdb-12f075f47c0a.mp4
 
-# Getting Started with Create React App using Typescript
+## Getting Started with Create React App using Typescript
 
-# The complete map of related types can be found at:
+## The complete map of related types can be found at:
 ![image](https://user-images.githubusercontent.com/1661231/219627314-e8e4eca7-0033-421a-855d-2925fb5de032.png)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
