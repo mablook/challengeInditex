@@ -16,7 +16,6 @@ const PodcastProvider: React.FC<Props> = ({ children }) => {
   const [loading, setLoading] = useState<boolean>(false)
 
   const getPodcasts = async () => {
-    console.log('is called -----------------')
     if(!podcasts){
       const data = await getLocalStorage({ url : process.env.REACT_APP_API_BASE_URL })
       await setPodcasts(data as RootFeed)
