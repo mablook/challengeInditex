@@ -5,7 +5,7 @@ import styles from "./DefaultPageContainer.module.scss";
 
 const DefaultPageContainer: FC = () => {
   return (
-    <div>
+    <div data-testid="podcast-container">
       <Header title="Podcaster" />
       <hr className={styles.solid}/>
       <main className={styles.main}>

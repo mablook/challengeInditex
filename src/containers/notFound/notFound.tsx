@@ -4,9 +4,9 @@ import styles from "./NotFound.module.scss";
 const NotFound: FC = () => {
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} >
       Not Found
-      <a href="/" className={styles.navBack}>back to home</a>
+      <a href="/" className={styles.navBack} data-testid="not-found">back to home</a>
     </div>
   );
 };
