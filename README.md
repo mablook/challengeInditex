@@ -56,4 +56,7 @@ REACT_APP_API_BASE_URL=https://itunes.apple.com/us/rss/toppodcasts/limit=100/gen
 REACT_APP_API_PRODUCT_DETAIL=https://itunes.apple.com/lookup  
 REACT_APP_API_INVALIDATE=3600000  
 
-## No testing is required in the document
+## Tests have been added to the project
+
+Tests have been added to the project, covering key features and components.
+![image](https://github.com/mablook/challengeInditex/assets/1661231/05aac001-1990-41cf-b1f0-4a9190b25d77)
