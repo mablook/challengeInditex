@@ -16,6 +16,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
+### `yarn install`
+
 ### `npm start <==> run development mode`
 
 Runs the app in the development mode.\
@@ -59,6 +61,8 @@ REACT_APP_BASE_URL=http://localhost
 REACT_APP_API_BASE_URL=https://itunes.apple.com/us/rss/toppodcasts/limit=100/genre=1310/json  
 REACT_APP_API_PRODUCT_DETAIL=https://itunes.apple.com/lookup  
 REACT_APP_API_INVALIDATE=3600000  
+_You can set the number of episodes of a podcast here_   
+REACT_APP_API_PODCAST_EPISODE_LIMIT=15
 
 ## Tests have been added to the project
 
