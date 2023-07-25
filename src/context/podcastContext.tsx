@@ -27,7 +27,7 @@ const PodcastProvider: React.FC<Props> = ({ children }) => {
       if(!podcasts){
         await getPodcasts()
         }
-        let data:PodcastDetailsResponse = await getLocalStorage({ url :`${process.env.REACT_APP_API_PRODUCT_DETAIL}?id=${id}&media=podcast&entity=podcastEpisode&limit=15` })
+        let data:PodcastDetailsResponse = await getLocalStorage({ url :`${process.env.REACT_APP_API_PRODUCT_DETAIL}?id=${id}&media=podcast&entity=podcastEpisode&limit=${process.env.REACT_APP_API_PODCAST_EPISODE_LIMIT || 5}` })
         const info:Entry[] = podcasts?.feed.entry.filter(obj => obj.id.attributes["im:id"] === id)!
         if(info === undefined) return
         data.podcastInfo = info[0]

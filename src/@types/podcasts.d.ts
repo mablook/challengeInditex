@@ -192,7 +192,7 @@ export interface PodcastInfo{
   img: string
 }
 
-export interface PodcastDetails {
+export interface PodcastDetailsData {
   wrapperType: string;
   kind: string;
   collectionId: number;
