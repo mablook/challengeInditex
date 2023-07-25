@@ -16,6 +16,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
+# Recommended to use yarn for installation and or deployment
+
 ### `yarn install`
 
 ### `npm start <==> run development mode`
@@ -114,6 +116,85 @@ Perform real-world performance testing using tools like Lighthouse, PageSpeed In
 ### Profiling and Validation:
 a. After implementing the optimizations, re-profile the components to validate the improvements in rendering time and other performance metrics.
 b. Conduct thorough testing to ensure that the optimized components function as expected and maintain their intended behavior.
+
+
+## How to Create Components for the Project
+
+### Create a New Component Folder:
+Create a new folder with the component name inside the src/components directory. For example, if you want to create a component called MyComponent, create a folder named MyComponent.
+
+### Create the Component File:
+Inside the MyComponent folder, create a new file named MyComponent.tsx. This file will contain the code for your component.
+
+### Write the Component Code:
+In MyComponent.tsx, write the code for your component. Here's an example structure for a functional component:
+
+```tsx
+Copy code
+import React from "react";
+import styles from "./MyComponent.module.scss";
+
+const MyComponent: React.FC = () => {
+  return (
+    <div className={styles.container}>
+      {/* Your component code here */}
+    </div>
+  );
+};
+
+export default MyComponent;
+```
+
+### Create a Component Module for Styling (Optional):
+If your component needs styling, you can create a separate module file inside the MyComponent folder named MyComponent.module.scss. This file will contain your component's CSS/SCSS styles.
+scss
+
+```tsx
+/* MyComponent.module.scss */
+.container {
+  /* Your component styles here */
+}
+```
+### Create a Test File for the Component (Optional but Recommended):
+To ensure the component works as expected, create a test file for it. Inside the MyComponent folder, create a new file named MyComponent.test.tsx.
+
+```tsx
+import React from "react";
+import { render } from "@testing-library/react";
+import MyComponent from "./MyComponent";
+
+describe("MyComponent", () => {
+  it("should render correctly", () => {
+    const { getByText } = render(<MyComponent />);
+    const componentText = getByText("Your component text"); // Replace with your component text
+    expect(componentText).toBeInTheDocument();
+  });
+});
+```
+
+In the MyComponent folder, create an index.ts file and export the MyComponent from there. This makes it easier to import the component from other parts of the project.
+
+```tsx
+export { default as MyComponent } from "./MyComponent";
+Using the Component in Other Files:
+
+You can now use your MyComponent in other files by importing it from the index.ts.
+tsx
+Copy code
+import { MyComponent } from "../components/MyComponent";
+
+const App: React.FC = () => {
+  return (
+    <div>
+      <MyComponent />
+    </div>
+  );
+};
+
+export default App;
+```
+
+That's it! With these steps, you have successfully created a new component and integrated it into your project. Remember to customize the component code and styles to fit your specific requirements. Additionally, keep adding test cases as your component's functionality grows to ensure its correctness. Happy coding!
 
 _Remember that optimization should be based on actual performance bottlenecks identified through profiling. Always prioritize readability and maintainability of the code while optimizing for performance._
 
