@@ -1,8 +1,7 @@
 import React from "react";
 import { fireEvent, render, screen } from "@testing-library/react";
 import PodcastDetails from "./podcastDetails";
-import { renderWithRouter, CustomProvider } from "./test-utils";
-import { PodcastDetailsResponse } from "uiTypes";
+import { CustomProvider } from "./test-utils";
 import { podDetailsMock } from "../../mocks/test-utils-data";
 
 // Mock the useParams and useNavigate hooks from 'react-router-dom'
@@ -102,14 +101,11 @@ describe("PodcastDetails Component", () => {
     );
 
     // Click on the episode button
-    const episodeButton = screen.getByText("“Birdhouse in Your Soul”—They Might Be G..."); // Replace "Button Text" with the actual text of the button
-
+    const episodeButton = screen.getByText("“Birdhouse in Your Soul”—They Might Be G...");
     // Check if the episode button is in the document
     expect(episodeButton).toBeInTheDocument();
-
     // Click on a podcast episode button
     fireEvent.click(episodeButton);
-
     // Check if useNavigate is called with the correct arguments
     expect(mockNavigate).toHaveBeenCalledWith("/podcast/123305545/episode/1000621606703");
   });

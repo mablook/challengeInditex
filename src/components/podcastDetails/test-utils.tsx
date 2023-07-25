@@ -1,9 +1,8 @@
-// test-utils.tsx
-
+//@ts-ignore / needs to redefine the type of CustomProvider
 import React, { ReactNode } from "react";
 import { MemoryRouter, Router, RouterProps } from "react-router-dom";
 import { createMemoryHistory, MemoryHistory } from "history";
-import { render, RenderOptions, RenderResult, Queries } from "@testing-library/react";
+import { render, Queries } from "@testing-library/react";
 import { PodcastContextType } from "uiTypes";
 import { PodcastContext } from "../../context/podcastContext";
 
