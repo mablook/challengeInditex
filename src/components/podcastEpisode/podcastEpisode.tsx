@@ -1,6 +1,6 @@
 import { FC, useContext, useEffect, useCallback, useState } from "react";
 import { useParams } from "react-router-dom";
-import { PodcastContextType, PodcastDetails } from "uiTypes";
+import { PodcastContextType, PodcastDetailsData } from "uiTypes";
 import { PodcastContext } from "../../context/podcastContext";
 import LeftDetails from "../leftDetails/leftDetails";
 import styles from "./PodcastEpisode.module.scss";
@@ -8,7 +8,7 @@ import styles from "./PodcastEpisode.module.scss";
 const PodcastEpisode: FC = () => {
   const { podcastId, episodeId } = useParams();
   const { podcastDetail, getPodcastDetail, setLoading } = useContext(PodcastContext) as PodcastContextType;
-  const [episode, setEpisode] = useState<PodcastDetails>();
+  const [episode, setEpisode] = useState<PodcastDetailsData>();
 
   const getDetailsInfo = useCallback(async () => {
     if(podcastId){

@@ -2,36 +2,7 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import PodcastItem from './podcastItem';
 import { PodcastContextType, Entry } from 'uiTypes';
 import { PodcastContext } from '../../context/podcastContext';
-
-const entry: Entry = {
-    id: {
-        attributes: {
-            'im:id': '123',
-        },
-        label: '123',
-    },
-    'im:name': {
-        label: 'Podcast Title',
-    },
-    'im:image': [
-        {
-            label: 'image-url',
-            attributes: { height: '100' }
-        },
-    ],
-    'im:artist': {
-        label: 'Podcast Author',
-        attributes: { href: '100' }
-    },
-    summary: { label: 'Podcast Summary' },
-    'im:price': { label: 'Podcast Price', attributes: { amount: '100', currency: 'USD' } },
-    'im:contentType': { attributes: { term: 'term', label: 'label' } },
-    rights: { label: 'Podcast Rights' },
-    title: { label: 'Podcast Title' },
-    link: { attributes: { href: 'href', rel: 'rel', type: '' } },
-    category: { attributes: { 'im:id': '123', term: 'term', scheme: 'scheme', label: 'label' } },
-    'im:releaseDate': { label: new Date('2021-07-20T12:00:00Z'), attributes: { label: 'label' } },
-};
+import { entryMock } from '../../mocks/test-utils-data';
 
 
 // Mock useNavigate
@@ -58,7 +29,7 @@ describe('PodcastItem', () => {
 
     render(
       <PodcastContext.Provider value={customContextValue}>
-        <PodcastItem entry={entry} />
+        <PodcastItem entry={entryMock} />
       </PodcastContext.Provider>
     );
 
@@ -76,7 +47,7 @@ describe('PodcastItem', () => {
 
     render(
       <PodcastContext.Provider value={customContextValue}>
-        <PodcastItem entry={entry} />
+        <PodcastItem entry={entryMock} />
       </PodcastContext.Provider>
     );
 

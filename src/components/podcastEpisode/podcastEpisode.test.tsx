@@ -7,6 +7,7 @@ import { useParams } from "react-router-dom";
 
 jest.mock("react-router-dom", () => ({
   useParams: jest.fn(),
+  useNavigate: jest.fn(),
 }));
 
 const podDetails:PodcastDetailsResponse = {
